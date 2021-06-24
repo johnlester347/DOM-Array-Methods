@@ -1,0 +1,22 @@
+{
+  "name": "dom",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "live-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/johnlester347/DOM-Array-Methods.git"
+  },
+  "author": "John Lester Pamplona",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/johnlester347/DOM-Array-Methods/issues"
+  },
+  "homepage": "https://github.com/johnlester347/DOM-Array-Methods#readme",
+  "devDependencies": {
+    "live-server": "^1.2.1"
+  }
+}
