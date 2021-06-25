@@ -8,13 +8,13 @@ const calculateWealthBtn = document.getElementById('calculate-wealth');
 
 let data = [];
 
-getRecipe();
+getRandomUser();
 // Fetch random user and add money
-async function getRecipe() {
+async function getRandomUser() {
     try {
         const res = await fetch('https://randomuser.me/api');
         const data = await res.json();
-        console.log(data);
+        // console.log(data);
         const user = data.results[0];
 
         const newUser = {
@@ -22,6 +22,7 @@ async function getRecipe() {
             money: Math.floor(Math.random() * 1000000)
         }
         addData(newUser);
+
     } catch (error) {
         console.log(error);
         alert('Something went wrong :(');
@@ -31,7 +32,7 @@ async function getRecipe() {
 // Add new obj to data arr
 function addData(obj) {
     data.push(obj);
-
+    console.log(data);
     updateDOM();
 }
 
@@ -41,6 +42,17 @@ function updateDOM(providedData = data) {
     main.innerHTML = '<h2><strong>Person</strong>Wealth</h2>';
 
     providedData.forEach(item => {
-
+        const element = document.createElement('div');
+        element.classList.add('person');
+        element.innerHTML = `<strong>${item.name}</strong> ${formatMoney(item.money)}`;
+        main.appendChild(element);
     })
 }
+
+// Format number as money 
+function formatMoney(number) {
+    return '$' + number.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
+}
+
+
+addUserBtn.addEventListener('click', getRandomUser);
