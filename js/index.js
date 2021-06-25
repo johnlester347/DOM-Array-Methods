@@ -9,6 +9,7 @@ const calculateWealthBtn = document.getElementById('calculate-wealth');
 let data = [];
 
 getRandomUser();
+
 // Fetch random user and add money
 async function getRandomUser() {
     try {
@@ -29,9 +30,19 @@ async function getRandomUser() {
     }
 }
 
+// Double everyones money
+function doubleMoney() {
+    data = data.map(user => {
+        return { ...user, money: user.money * 2 };
+    });
+
+    updateDOM();
+}
+
+
 // Add new obj to data arr
 function addData(obj) {
-    data.push(obj);
+    data.push(obj); // IT will going to push the name and money in the variable data in the global scope
     console.log(data);
     updateDOM();
 }
@@ -56,3 +67,6 @@ function formatMoney(number) {
 
 
 addUserBtn.addEventListener('click', getRandomUser);
+doubleBtn.addEventListener('click', doubleMoney);
+
+console.log(data);
